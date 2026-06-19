@@ -1,0 +1,66 @@
+\documentclass[a4paper,12pt]{article}
+
+% --- Wichtige Pakete ---
+\usepackage[utf8]{inputenc}       % Erlaubt Umlaute (ä, ö, ü)
+\usepackage[ngerman]{babel}       % Deutsche Trennung und Begriffe (z.B. "Datum")
+\usepackage[T1]{fontenc}          % Schöne Schriftarten-Kodierung
+\usepackage{amsmath,amssymb,amsfonts} % Für mathematische Formeln
+\usepackage{graphicx}             % Für das Einfügen von Bildern
+\usepackage{geometry}             % Für die Seitenränder
+\usepackage{fancyhdr}             % Für schöne Kopf- und Fußzeilen
+
+% --- Fehlerbehebungen ---
+\setlength{\headheight}{14.5pt}   % Behebt den fancyhdr-Fehler
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}    	% Behebt Minuszeichen-Fehler
+\DeclareUnicodeCharacter{2219}{\ensuremath{\cdot}} 	% Behebt Malzeichen-Fehler
+
+% --- Seitenränder einstellen ---
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+
+% --- Kopf- und Fußzeile einrichten ---
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Name: \textbf{Fabian Seemann}}       	 % Dein Name links oben
+\chead{Studiengang: \textbf{BiF}}                % Deine Klasse in der Mitte
+\rhead{\today}                              	 % Aktuelles Datum rechts oben
+\lfoot{Fach: ALGOS}                    	 	% Fach links unten
+\rfoot{Seite \thepage}                      % Seitenzahl rechts unten
+\renewcommand{\headrulewidth}{0.4pt}        % Linie unter der Kopfzeile
+\renewcommand{\footrulewidth}{0.4pt}        % Linie über der Fußzeile
+
+\begin{document}
+	
+	% --- Titel des Arbeitsblattes ---
+	\begin{center}
+		\LARGE{\textbf{Lösungen zum Arbeitsblatt 1:}} \\[0.2cm]
+		\large{Thema: Komplexität, Suche, Hashing}
+	\end{center}
+	\vspace{0.5cm}
+	
+	% --- Aufgabe 1 ---
+	\section*{Aufgabe 1.1: O-Notation Rechenregeln}
+	Bestimmen/Vereinfachen Sie die Laufzeitkomplexität der folgenden Ausdrücke:
+	
+	O(10n) = ?
+	\linebreak
+	O(2n + 3) = ?
+	O(14n³−3n²+ 10) = ?
+	O(3 + 2 ∙ sin(n)) = ?
+	O(2n² + 3n+ 3) = ?
+	O(4 · 2n + 3n2) = ?
+	O(4n2 · log(n) + 2n · (log(n)) 3) = ?
+	O(17n² + 3n + 100) = ?
+	O(4n · (-2 + 3n) · (n - log(n)) / n) = ?
+	
+	
+	
+	% --- Aufgabe 2 ---
+	\section*{Aufgabe 1.2: Pseudocode}
+	
+	
+	
+	% --- Aufgabe 3 ---
+	\section*{Aufgabe 1.3: Typische Komplexität}
+	
+	
+\end{document}
