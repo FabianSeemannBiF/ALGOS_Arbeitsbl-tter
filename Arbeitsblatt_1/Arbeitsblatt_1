@@ -102,3 +102,105 @@ Da g(n) also entweder langsamer oder maximal gleich schnell wächst, besitzt es 
 - *...fast genau die gleiche Ordnung:* Dies würde das Wachstum zu stark einschränken. Die O-Notation erlaubt es, dass g(n) auch drastisch langsamer wächst (z. B. ist eine konstante Laufzeit O(1) formal auch in O(n³) enthalten).
 - *...wächst schwächer als f(n):* Das ist zwar *möglich*, aber nicht *zwingend* wahr, da g(n) eben auch exakt die gleiche Ordnung wie f(n) haben darf. Das Wort "höchstens" deckt beide erlaubten Fälle (schwächer und gleich stark) perfekt ab.
 
+### Beispiel 1.5: Asymptotische Laufzeitkomplexität
+
+Welche asymptotische Laufzeitkomplexität haben die folgenden Pseudo Code Blöcke?
+
+```pseudocode
+/**
+* Code Block A: O(n)
+* Herleitung: Die äußere Schleife läuft genau n-mal. Die innere Schleife läuft unabhängig von n immer genau 5-mal (feste  
+* Konstante). Eine konstante Anzahl an Durchläufen benötigt einen Aufwand von O(1). Nach der Produktregel ergibt das: 
+* n⋅O(1)=O(n).
+*/
+for (i = 1..n) {
+	for (j = 1..5) {
+		// do something simple
+	}
+}
+
+/*
+* Code Block B: O(n²)
+* Herleitung: Die erste for-Schleife läuft n-mal = O(n). Danach folgen 2 ineinander verschachtelte Schleifen die n-mal laufen -> 
+* O(n*n) = O(n²). Nach der Dominanzregel setzt sich der quadratische Term gegenüber dem linearen durch.
+*/
+for (i = 1..n) {
+	x[i] = 0
+}
+for (i = 1..n) {
+	for (j = 1..n) {
+		x[i] = x[i] + 1
+	}
+}
+
+/*
+* Code Block C: O(n * log(m))
+* Herleitung: Die äußere Schleife läuft genau n-mal. In der inneren while-Schleife wird der Wert j (der anfangs m ist) in jedem 
+* Schritt durch 10 geteilt. Wenn eine Variable in jedem Schritt durch eine Konstante dividiert wird, läuft die Schleife 
+* logarithmisch zur Basis dieses Teilers. Die innere Schleife benötigt also O(log10​(m)) Schritte. Per Produktregel ergibt das 
+* multipliziert O(n⋅log(m)).
+*/
+for (i = 1..n) {
+	j = m
+	while (j > 1) {
+		j = j / 10
+	}
+}
+
+/*
+* Code Block D: O(n² * log(n))
+* Herleitung: 3 ineinander verschachtelte Schleifen:
+* 1. innere while-Schleife: halbiert k in jedem Schritt (ausgehend von n). Das entspricht logarithmischer Laufzeit -> O(log(n))
+* 2. mittlere for-Schleife: läuft genau n-mal und führt die innere Schleife aus. -> O(n * log(n))
+* 3. äußere while-Schleife: läuft genau n-mal
+* Alles multipliziert: n * n * log(n) = O(n²*log(n))
+*/
+i = 1
+while (i <= n)
+	for(j = 1..n) {
+		k = n
+		while(k > 1) {
+			k = k / 2
+		}
+	}
+	i = i + 1
+}
+
+/*
+* Code Block E: O(n)
+* Herleitung: Der Algorithmus verwendet eine einfache, unverschachtelte for-Schleife, die exakt von 1 bis n läuft. In der 
+* Schleife wird nur eine einfache Multiplikation ausgeführt (O(1)). Der Gesamtauwand wächst somit rein linear mit n.
+*/
+int factorial(int n) {
+	int result = 1;
+	for (int i=1 ; i<=n ; i++) {
+		result *= i;
+	}
+	return result;
+}
+
+/*
+* Code Block F: O(N²) wobei N... ursprüngliche A.size()
+* Herleitung: Gaußsche Summenformel -> O(N²)
+*/
+void bSort(Array A) {
+	for (n = A.size; n > 1; --n) {
+		for (i = 0; i < n-1; ++i) {
+			if (A[i] > A[i+1]) {
+				A.swap(i, i+1)
+			}
+		}
+	}
+}
+
+/**
+* Code Block G: O(n²)
+* Herleitung: Selbes Prinzip wie Code Block F.
+*/
+for (i = 1..n) {
+	for (j = 1..i) {
+		// do something irrelevant
+	}
+}
+```
+
