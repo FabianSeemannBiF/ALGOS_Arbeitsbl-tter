@@ -15,3 +15,39 @@ Bestimmen/Vereinfachen Sie die Laufzeitkomplexität der folgenden Ausdrücke:
 | O(4n²*log(n)+2n*(log(n))³) = O(n²log(n)) | Summenregel über Produktterme            | Wir müssen entscheiden, welcher der beiden Terme mächtiger ist. Der linke Term hat ein n², der rechte nur ein n¹. Weil die Basis-Potenz von n den größten Einfluss auf das asymptotische Wachstum hat, dominiert das n² des linken Terms das einfache n des rechten Terms vollständig – selbst wenn der Logarithmus im rechten Term hoch 3 genommen wird. Der rechte Term fliegt raus, die Konstante 4 wird gestrichen. |
 | O(17n²+3n+100) = O(n²)                   | Summenregel + Konstantenregel            | Siehe Rechnung 5.                                            |
 | O(4n(-2+3n)(n-log(n))/n) = O(n²)         | Algebraische Vereinfachung der O-Regeln  | **Kürzen:** Der Bruch hat ein n im Zähler (bei 4n) und ein n im Nenner. Diese kürzen sich gegenseitig weg:  4(-2+3n)(n-log(n)). **Dominante Kerne herausfiltern:** Statt alles mühsam auszumultiplizieren, schauen wir nur an, was in den einzelnen Klammern dominiert: In der Klammer (−2+3n) dominiert eindeutig das 3n. In der Klammer (n−log(n)) dominiert das lineare n, weil Logarithmen viel langsamer wachsen als n. **Multiplizieren:** Wir multiplizieren die verbliebenen Hauptträger des Wachstums: 4x3nxn = 12n². **Konstantenregel:** Am Ende entfernen wir die Konstante 12 und es bleibt die reine Komplexitätsklasse übrig. |
+
+### Beispiel 1.2: Pseudocode
+
+Geben Sie einen einfachen Algorithmus mit der Laufzeitkomplexität von O(m ∙ n) in Pseudocode an. Achten Sie darauf, dass dieser Algorithmus eine sinnvolle Berechnung durchführt.
+
+```pseudocode
+algorithm MatrixSumme(Matrix M, Integer m, Integer n)
+    // Initialisierung der Summe (konstanter Aufwand: O(1))
+    summe = 0
+    
+    // Äußere Schleife läuft genau m-mal (für jede Zeile)
+    for i = 0 to m - 1 do
+    
+        // Innere Schleife läuft genau n-mal (für jede Spalte in dieser Zeile)
+        for j = 0 to n - 1 do
+        
+            // Elementweise Addition (primitive Operation: O(1))
+            summe = summe + M[i][j]
+            
+        end for
+    end for
+    
+    // Rückgabe des Ergebnisses (O(1))
+    return summe
+```
+
+**Begründung**: 
+
+- **Innere Schleife:** for j-Schleife führt eine primitive Operation (Addition) aus, die O(1) benötigt. Da sie von 0 bis n−1 läuft, benötigt diese Schleife für sich allein genommen einen Aufwand von O(n).
+- **Äußere Schleife:** Die äußere for i-Schleife läuft von 0 bis m−1, also genau m-mal.
+- **Produktregel:** Da die innere Schleife komplett in der äußeren Schleife verschachtelt ist, multiplizieren sich die Aufwände laut den Rechenregeln der O-Notation:
+
+$$
+Gesamtlaufzeit=m⋅O(n)=O(m⋅n)
+$$
+
