@@ -74,3 +74,31 @@ Bewerten Sie die folgenden Komplexitäten mit jeweils einer der Eigenschaften he
 - **Ungünstig:** Bei einer Verdoppelung der Daten vervierfacht sich der Aufwand (bei n²). Das wird bei großen Eingaben schnell sehr langsam.
 - **Katastrophal:** Bereits bei kleinen Werten für n (z. B. n=50 oder n=100) explodiert die Laufzeit so stark, dass die Berechnung selbst auf modernen Supercomputern Jahrtausende dauern würde.
 
+### Beispiel 1.4: Asymptotische Laufzeitkomplexität
+
+Welche der folgenden Aussagen ist für eine Funktion g(n) in O(f(n)) für wahr, wenn g(n) alle Voraussetzungen der Definition einer O-Notation erfüllt? Begründen Sie Ihre Wahl.
+
+- g(n) wächst echt stärker als f(n)
+- g(n) hat höchstens die gleiche Ordnung wie f(n)
+- g(n) hat mindestens die gleiche Ordnung wie f(n)
+- g(n) hat fast genau die gleiche Ordnung wie f(n)
+- g(n) wächst schwächer als f(n)
+
+**Richtige Aussage**: g(n) hat höchstens die gleiche Ordnung wie f(n).
+
+**Begründung**: Die Big-O-Notation (O) beschreibt eine **asymptotische obere Schranke** für das Wachstum einer Funktion. Wenn eine Funktion g(n)∈O(f(n)) ist, bedeutet dies mathematisch, dass g(n) ab einem bestimmten Punkt (n≥n0) niemals schneller wächst als ein konstantes Vielfaches von f(n) (c⋅f(n)).
+
+Daraus ergeben sich zwei mögliche Fälle für das Wachstum:
+
+1. g(n) wächst **langsamer (schwächer)** als f(n) (z. B. ist n∈O(n2)).
+2. g(n) wächst **genauso schnell** wie f(n) (z. B. ist 3n∈O(n)).
+
+Da g(n) also entweder langsamer oder maximal gleich schnell wächst, besitzt es **höchstens** die gleiche Ordnung (Komplexitätsklasse) wie die Vergleichsfunktion f(n).
+
+**Warum die anderen Aussagen falsch sind:**
+
+- *...echt stärker als f(n):* Widerspricht der Definition der oberen Schranke komplett.
+- *...mindestens die gleiche Ordnung:* Das wäre die Definition für die Ω-Notation (untere Schranke).
+- *...fast genau die gleiche Ordnung:* Dies würde das Wachstum zu stark einschränken. Die O-Notation erlaubt es, dass g(n) auch drastisch langsamer wächst (z. B. ist eine konstante Laufzeit O(1) formal auch in O(n³) enthalten).
+- *...wächst schwächer als f(n):* Das ist zwar *möglich*, aber nicht *zwingend* wahr, da g(n) eben auch exakt die gleiche Ordnung wie f(n) haben darf. Das Wort "höchstens" deckt beide erlaubten Fälle (schwächer und gleich stark) perfekt ab.
+
