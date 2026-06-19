@@ -41,17 +41,12 @@
 	\section*{Aufgabe 1.1: O-Notation Rechenregeln}
 	Bestimmen/Vereinfachen Sie die Laufzeitkomplexität der folgenden Ausdrücke:
 	
-	O(10n) = ?
-	\linebreak
-	O(2n + 3) = ?
-	O(14n³−3n²+ 10) = ?
-	O(3 + 2 ∙ sin(n)) = ?
-	O(2n² + 3n+ 3) = ?
-	O(4 · 2n + 3n2) = ?
-	O(4n2 · log(n) + 2n · (log(n)) 3) = ?
-	O(17n² + 3n + 100) = ?
-	O(4n · (-2 + 3n) · (n - log(n)) / n) = ?
-	
+	\noindent
+	\begin{tabular}{llp{9cm}}
+		\textbf{Gleichung:} & $O(10n) = O(n)$ & \\
+		\textbf{Regel:}     & Konstantenregel & (Skalierung) \\
+		\textbf{Erklärung:} & \multicolumn{2}{p{11cm}}{Der Faktor 10 ist eine feste Konstante. Sie verändert sich nicht, wenn $n$ wächst. Uns interessiert nur die Art des Wachstums (linear). Die genaue Steilheit der Kurve ist in der O-Notation egal. Daher fällt die 10 weg.}
+	\end{tabular}
 	
 	
 	% --- Aufgabe 2 ---
